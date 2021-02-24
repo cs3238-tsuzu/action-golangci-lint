@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -e
+set -o pipefail
 
 cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 
