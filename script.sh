@@ -19,6 +19,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 echo '::group:: Running golangci-lint with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
 golangci-lint run --out-format line-number ${INPUT_GOLANGCI_LINT_FLAGS} \
+  | tee /dev/stderr \
   | reviewdog -f=golangci-lint \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
